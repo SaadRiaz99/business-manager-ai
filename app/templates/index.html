@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BizPilot AI</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span>BP</span><strong>BizPilot AI</strong></div>
+    <nav>
+      <button class="nav active">Overview</button>
+      <button class="nav">Lead Generator</button>
+      <button class="nav">Sales Pipeline</button>
+      <button class="nav">Tasks</button>
+    </nav>
+    <div class="sidebar-note"><b>Agency workspace</b><small>Demo mode · fictional leads</small></div>
+  </aside>
+
+  <main>
+    <header><div><p class="eyebrow">BUSINESS COMMAND CENTER</p><h1>Good evening, Saad.</h1><p>Here is what needs your attention today.</p></div><button class="primary" onclick="openModal()">+ Add lead</button></header>
+
+    <section class="metrics" id="metrics"></section>
+
+    <section class="grid">
+      <article class="panel leads-panel">
+        <div class="panel-head"><div><h2>Lead pipeline</h2><p>Prioritized by opportunity score</p></div><button class="secondary" onclick="generateDemo()">Generate demo leads</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Company</th><th>Score</th><th>Stage</th><th>Value</th><th>Action</th></tr></thead><tbody id="leads"></tbody></table></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head"><div><h2>Action list</h2><p>Follow-ups that move revenue</p></div></div>
+        <form id="task-form" class="inline-form"><input id="task-title" placeholder="Add a task…" required><button class="icon-button">+</button></form>
+        <div id="tasks" class="tasks"></div>
+      </article>
+    </section>
+
+    <section class="panel insight"><div class="ai-icon">✦</div><div><p class="eyebrow">AI RECOMMENDATION</p><h2 id="recommendation">Focus on hot leads with no meeting booked.</h2><p>Review the outreach draft, personalize the first line, and follow up within 24 hours.</p></div></section>
+  </main>
+
+  <dialog id="lead-modal">
+    <form id="lead-form">
+      <div class="modal-head"><div><p class="eyebrow">NEW OPPORTUNITY</p><h2>Add a lead</h2></div><button type="button" class="close" onclick="closeModal()">×</button></div>
+      <div class="form-grid">
+        <label>Company<input name="company" required></label>
+        <label>Contact name<input name="contact_name"></label>
+        <label>Email<input name="email" type="email"></label>
+        <label>Website<input name="website" placeholder="https://"></label>
+        <label>Industry<input name="industry" value="Marketing Agency" required></label>
+        <label>Location<input name="location"></label>
+        <label>Company size<select name="company_size"><option>small</option><option>medium</option><option>large</option></select></label>
+        <label>Estimated value<input name="estimated_value" type="number" value="500" min="0"></label>
+        <label class="wide">Business opportunity<textarea name="need" placeholder="What problem can you solve?"></textarea></label>
+      </div>
+      <button class="primary full">Score and save lead</button>
+    </form>
+  </dialog>
+  <script src="/static/app.js"></script>
+</body>
+</html>
+
