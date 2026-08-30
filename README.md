@@ -53,3 +53,13 @@ Copy `.env.example` to `.env`. The current MVP does not require an API key.
 
 See [SELLING_PLAN.md](SELLING_PLAN.md) for the complete launch plan.
 
+## Deploy on Vercel
+
+The repository includes `api/index.py` and `vercel.json` for Vercel's Python runtime.
+Connect the repository in Vercel and deploy the `main` branch with the project root set
+to the repository root. No build command is required.
+
+Vercel functions have an ephemeral filesystem. The default Vercel deployment therefore
+uses `/tmp/bizpilot.db`, which is suitable only for demonstrations and can reset between
+function instances. Set `DATABASE_URL` to a managed PostgreSQL connection for persistent
+production data.
