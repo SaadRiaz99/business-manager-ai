@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BizPilot AI — Setup & Selling Guide</title>
+  <style>
+    :root{--ink:#102019;--green:#195f43;--lime:#dff760;--muted:#627168;--line:#dce5de;--paper:#fff;--soft:#f2f7f3}*{box-sizing:border-box}body{margin:0;background:#dfe5e1;color:var(--ink);font:15px/1.55 Arial,sans-serif}.page{width:210mm;min-height:297mm;margin:12mm auto;background:var(--paper);padding:18mm;box-shadow:0 8px 36px #10201922;position:relative;page-break-after:always}.page:last-child{page-break-after:auto}.cover{display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#07140e,#123b2a 70%,#195f43);color:white;overflow:hidden}.cover:after{content:"";position:absolute;width:145mm;height:145mm;border:1px solid #dff76055;border-radius:50%;right:-55mm;bottom:-45mm;box-shadow:0 0 0 20mm #dff7600a,0 0 0 40mm #dff76008}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:24px}.mark{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--lime);color:#123b2a}.cover h1{font-size:48px;line-height:1.05;margin:0;max-width:150mm}.cover p{color:#cce0d3;font-size:18px;max-width:135mm}.badge{display:inline-block;padding:8px 12px;border:1px solid #dff76088;border-radius:99px;color:var(--lime);font-size:12px;letter-spacing:1px}.meta{display:flex;gap:25px;color:#aac4b4}.meta b{display:block;color:white}h2{font-size:28px;margin:0 0 8px}h3{font-size:17px;margin:22px 0 8px;color:var(--green)}p{margin:5px 0 12px;color:var(--muted)}.eyebrow{font-size:11px;letter-spacing:1.5px;font-weight:bold;color:var(--green)}.step{display:grid;grid-template-columns:34px 1fr;gap:12px;margin:12px 0;padding:13px;background:var(--soft);border-radius:12px}.step span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:white;font-weight:bold}.step b{display:block}.code{background:#0c1c14;color:#dff760;padding:14px;border-radius:10px;font:12px/1.65 Consolas,monospace;white-space:pre-wrap}.warning{padding:14px;border-left:5px solid #e5a72e;background:#fff8e6;border-radius:8px}.good{padding:14px;border-left:5px solid var(--green);background:var(--soft);border-radius:8px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{border:1px solid var(--line);border-radius:12px;padding:14px}.card b{color:var(--green)}table{width:100%;border-collapse:collapse;margin-top:12px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left}th{background:var(--soft);color:var(--green)}.checklist{list-style:none;padding:0}.checklist li{margin:8px 0}.checklist li:before{content:"☐";color:var(--green);font-weight:bold;margin-right:9px}.poster{display:block;max-width:150mm;max-height:205mm;margin:10mm auto;border-radius:16px;box-shadow:0 10px 35px #10201925}.footer{position:absolute;bottom:10mm;left:18mm;right:18mm;display:flex;justify-content:space-between;color:#8b978f;font-size:10px}@media print{body{background:white}.page{margin:0;box-shadow:none}@page{size:A4;margin:0}}
+  </style>
+</head>
+<body>
+  <section class="page cover">
+    <div class="brand"><span class="mark">BP</span> BizPilot AI</div>
+    <div><span class="badge">SETUP • TESTING • SELLING</span><h1>Business Automation Setup Guide</h1><p>Install, run, deploy, test, and present a multi-agent command center for any business.</p></div>
+    <div class="meta"><div><b>Project</b>business-manager-ai</div><div><b>Owner</b>Saad Bin Riaz</div><div><b>Version</b>0.2</div></div>
+  </section>
+
+  <section class="page">
+    <p class="eyebrow">01 — LOCAL INSTALLATION</p><h2>Run BizPilot AI on Windows</h2><p>Use PowerShell from the project directory.</p>
+    <div class="step"><span>1</span><div><b>Download the latest code</b><div class="code">git clone https://github.com/SaadRiaz99/business-manager-ai.git
+cd business-manager-ai</div></div></div>
+    <div class="step"><span>2</span><div><b>Create and activate a virtual environment</b><div class="code">python -m venv .venv
+.venv\Scripts\Activate.ps1</div></div></div>
+    <div class="step"><span>3</span><div><b>Install dependencies</b><div class="code">python -m pip install --upgrade pip
+pip install -r requirements.txt</div></div></div>
+    <div class="step"><span>4</span><div><b>Start the FastAPI server</b><div class="code">python -m uvicorn app.main:app --reload</div></div></div>
+    <div class="good"><b>Open the application:</b> http://127.0.0.1:8000<br><b>Open API documentation:</b> http://127.0.0.1:8000/docs</div>
+    <h3>Run automated tests</h3><div class="code">python -m pytest -q
+python -m compileall -q app tests</div>
+    <div class="footer"><span>BizPilot AI Setup Guide</span><span>2</span></div>
+  </section>
+
+  <section class="page">
+    <p class="eyebrow">02 — MULTI-AGENT WORKFLOW</p><h2>How the automation planner works</h2><p>The orchestrator reads the business type and goal, then selects the specialists needed to create a coordinated plan.</p>
+    <div class="grid">
+      <div class="card"><b>Sales Agent</b><p>Lead capture, qualification, opportunities, and follow-ups.</p></div>
+      <div class="card"><b>Marketing Agent</b><p>Offers, campaigns, content, and channel measurement.</p></div>
+      <div class="card"><b>Operations Agent</b><p>Processes, checklists, owners, deadlines, and exceptions.</p></div>
+      <div class="card"><b>Finance Agent</b><p>Revenue, costs, invoices, margins, and cash flow.</p></div>
+      <div class="card"><b>Customer Support Agent</b><p>Request routing, draft replies, service, and escalation.</p></div>
+      <div class="card"><b>Human Approval</b><p>Required for external messages, payments, refunds, and destructive actions.</p></div>
+    </div>
+    <h3>Example request</h3><div class="code">POST /api/automation/plan
+{
+  "business_name": "Saad Demo School",
+  "business_type": "Local School",
+  "goal": "Automate admissions, parent messages, fees, and reporting",
+  "channels": ["WhatsApp", "Email"]
+}</div>
+    <h3>Useful API endpoints</h3>
+    <table><tr><th>Endpoint</th><th>Purpose</th></tr><tr><td>POST /api/automation/plan</td><td>Create and save a coordinated plan</td></tr><tr><td>GET /api/automation/runs</td><td>View the last 20 plans</td></tr><tr><td>GET /api/leads</td><td>View prioritized leads</td></tr><tr><td>GET /api/metrics</td><td>View business KPIs</td></tr></table>
+    <div class="footer"><span>BizPilot AI Setup Guide</span><span>3</span></div>
+  </section>
+
+  <section class="page">
+    <p class="eyebrow">03 — VERCEL DEPLOYMENT</p><h2>Publish the application</h2>
+    <ol><li>Import the GitHub repository into Vercel.</li><li>Keep the project root at the repository root.</li><li>No build command is required; <code>vercel.json</code> points to <code>api/index.py</code>.</li><li>Deploy the <code>main</code> branch.</li><li>Set <code>DATABASE_URL</code> to managed PostgreSQL before real production use.</li></ol>
+    <div class="warning"><b>Current production blocker:</b> Vercel Authentication is enabled. Public visitors are redirected to Vercel sign-in and API requests return 401. In Vercel, open <b>Project → Settings → Deployment Protection</b>, disable protection for Production, and redeploy before sharing the marketing link.</div>
+    <h3>Production test checklist</h3><ul class="checklist"><li>Homepage returns HTTP 200 without sign-in</li><li>Dashboard works on desktop and mobile</li><li>Metrics, leads, and tasks load</li><li>Automation form returns specialist cards</li><li>Automation history saves correctly</li><li>Invalid requests return clear validation errors</li><li>No browser console errors</li><li>Persistent production database is configured</li><li>Sensitive actions require human approval</li></ul>
+    <h3>Save this guide as a PDF</h3><p>Open this file in Chrome or Edge, press <b>Ctrl + P</b>, choose <b>Save as PDF</b>, enable background graphics, and save.</p>
+    <div class="footer"><span>BizPilot AI Setup Guide</span><span>4</span></div>
+  </section>
+
+  <section class="page">
+    <p class="eyebrow">04 — SALES ASSET</p><h2>Facebook & Instagram Poster</h2><p>Use this square creative with a short caption and a direct demo-booking method.</p>
+    <img class="poster" src="assets/bizpilot-ai-sales-poster.png" alt="BizPilot AI sales poster">
+    <div class="footer"><span>BizPilot AI Setup Guide</span><span>5</span></div>
+  </section>
+</body>
+</html>

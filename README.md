@@ -28,3 +28,8 @@ python -m uvicorn app.main:app --reload
 ```
 
 Open <http://127.0.0.1:8000>; API docs are at <http://127.0.0.1:8000/docs>.
+
+## Setup and sales material
+
+- Open [`docs/pdf.html`](docs/pdf.html) for the printable setup, testing, deployment, and selling guide. Use **Ctrl + P → Save as PDF**.
+- Social sales poster: [`docs/assets/bizpilot-ai-sales-poster.png`](docs/assets/bizpilot-ai-sales-poster.png).
