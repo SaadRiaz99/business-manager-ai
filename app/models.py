@@ -1,7 +1,12 @@
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from sqlalchemy import Date, DateTime, Float, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 from .database import Base
+
+
+def _utcnow() -> datetime:
+    return datetime.now(timezone.utc)
+
 
 class Lead(Base):
     __tablename__ = "leads"
@@ -20,7 +25,8 @@ class Lead(Base):
     next_follow_up: Mapped[date | None] = mapped_column(Date, nullable=True)
     notes: Mapped[str] = mapped_column(Text, default="")
     outreach_draft: Mapped[str] = mapped_column(Text, default="")
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+
 
 class Task(Base):
     __tablename__ = "tasks"
@@ -29,7 +35,8 @@ class Task(Base):
     due_date: Mapped[date | None] = mapped_column(Date, nullable=True)
     priority: Mapped[str] = mapped_column(String(20), default="Medium")
     completed: Mapped[int] = mapped_column(Integer, default=0)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+
 
 class AutomationRun(Base):
     __tablename__ = "automation_runs"
@@ -40,4 +47,4 @@ class AutomationRun(Base):
     channels: Mapped[str] = mapped_column(Text, default="")
     plan_json: Mapped[str] = mapped_column(Text)
     status: Mapped[str] = mapped_column(String(30), default="plan_ready")
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
