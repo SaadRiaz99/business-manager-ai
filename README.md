@@ -18,16 +18,31 @@ Enter a business type (restaurant, school, clinic, shop, agency, e-commerce, ser
 
 The MVP plans automation. It does not falsely claim to execute external actions. Messages, payments, refunds, and destructive actions require human approval, and real execution requires authorized tool connections.
 
-## Run
+## Run (automated)
+
+```powershell
+.\run.ps1
+```
+
+This creates a virtual environment, installs dependencies, runs tests, and starts the dev server.
+
+## Run (manual)
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+python -m pytest tests/ -v
 python -m uvicorn app.main:app --reload
 ```
 
 Open <http://127.0.0.1:8000>; API docs are at <http://127.0.0.1:8000/docs>.
+
+## Test
+
+```powershell
+python -m pytest tests/ -v
+```
 
 ## Setup and sales material
 
