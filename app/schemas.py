@@ -1,7 +1,5 @@
 from datetime import date
-
 from pydantic import BaseModel, ConfigDict, Field
-
 
 class LeadCreate(BaseModel):
     company: str = Field(min_length=2, max_length=120)
@@ -17,13 +15,11 @@ class LeadCreate(BaseModel):
     next_follow_up: date | None = None
     notes: str = ""
 
-
 class LeadUpdate(BaseModel):
     stage: str | None = None
     estimated_value: float | None = Field(default=None, ge=0)
     next_follow_up: date | None = None
     notes: str | None = None
-
 
 class LeadOut(LeadCreate):
     model_config = ConfigDict(from_attributes=True)
@@ -31,16 +27,19 @@ class LeadOut(LeadCreate):
     score: int
     outreach_draft: str
 
-
 class DemoGenerate(BaseModel):
     industry: str = "Cleaning Services"
     location: str = "Austin, Texas"
     service: str = "website redesign and lead automation"
     count: int = Field(default=5, ge=1, le=10)
 
-
 class TaskCreate(BaseModel):
     title: str = Field(min_length=2, max_length=180)
     due_date: date | None = None
     priority: str = "Medium"
 
+class BusinessAutomationRequest(BaseModel):
+    business_name: str = Field(default="My Business", min_length=2, max_length=140)
+    business_type: str = Field(min_length=2, max_length=100)
+    goal: str = Field(min_length=8, max_length=1000)
+    channels: list[str] = Field(default_factory=list, max_length=10)

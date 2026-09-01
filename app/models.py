@@ -1,14 +1,10 @@
 from datetime import date, datetime
-
 from sqlalchemy import Date, DateTime, Float, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
-
 from .database import Base
-
 
 class Lead(Base):
     __tablename__ = "leads"
-
     id: Mapped[int] = mapped_column(primary_key=True)
     company: Mapped[str] = mapped_column(String(120), index=True)
     contact_name: Mapped[str] = mapped_column(String(100), default="")
@@ -26,10 +22,8 @@ class Lead(Base):
     outreach_draft: Mapped[str] = mapped_column(Text, default="")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
-
 class Task(Base):
     __tablename__ = "tasks"
-
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(180))
     due_date: Mapped[date | None] = mapped_column(Date, nullable=True)
@@ -37,3 +31,13 @@ class Task(Base):
     completed: Mapped[int] = mapped_column(Integer, default=0)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
+class AutomationRun(Base):
+    __tablename__ = "automation_runs"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    business_type: Mapped[str] = mapped_column(String(100), index=True)
+    business_name: Mapped[str] = mapped_column(String(140), default="My Business")
+    goal: Mapped[str] = mapped_column(Text)
+    channels: Mapped[str] = mapped_column(Text, default="")
+    plan_json: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(String(30), default="plan_ready")
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
